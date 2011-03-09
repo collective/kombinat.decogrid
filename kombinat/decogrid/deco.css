@@ -1,0 +1,26 @@
+/* The ${columns}-column Deco Grid System for fixed width of ${width}px:
+ * Cells are ${cell}px ($p_cell%), margin will be ${margin}px ($p_margin%).
+ * Portal left/right margin is ${portal_margin}dpx ($p_portal_margin%).
+ */
+
+${element}.${css_row} {
+  float: left;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+${element}.${css_cell} {
+  position: relative;
+  float: left;
+  left: 100%;
+}
+
+/* Width classes */
+${widths}
+
+/* Positioning classes, these are subtracting from a rightmost position,
+ * which is why they seem the wrong way around */
+${positions}
+
+/* Convenience classes. Not strictly necessary. */
+${conveniences}
