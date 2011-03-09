@@ -26,7 +26,8 @@ setup(name='kombinat.decogrid',
           'setuptools',
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points={
+            'console_scripts': [
+                'decogrid_generatecss = kombinat.decogrid.grid:generator',
+            ]},
       )

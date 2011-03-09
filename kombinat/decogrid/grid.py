@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import optparse
 import os
-print '/*'
 
 cell = 0.1
 while int(cell) != cell:
@@ -90,3 +90,35 @@ for i in range(2, min(7, columns)):
     css += pos + "\n"
 
 print css
+
+
+def generator():
+    parser = optparse.OptionParser(usage="""%prog [options]
+
+%prog generate decogrid columns.css for plone (http://deco.gs).""")
+
+    parser.add_option('-w', '--width', action='store_true',
+                      dest='width', default=960, type="int",
+                      help="portal width in pixels incl. potentially margins")
+
+    parser.add_option('-m', '--margin', action='store_true',
+                      dest='margin', default=10, type="int",
+                      help="Margins between cells.")
+
+    parser.add_option('-c', '--columns', action='store_true',
+                      dest='columns', default=16, type="int",
+                      help="Columns.")
+
+    parser.add_option('-o', '--omit-margin', action='store_true',
+                      dest='omit', default=False, type="bool",
+                      help="Omit left and right margin around portal " + \
+                           "(recommended for nesting grids inside grids).")
+
+    (options, args) = parser.parse_args()
+
+    if len(args) != 0:
+        parser.print_help()
+        return
+
+if __name__ == '__main__':
+    generator()
