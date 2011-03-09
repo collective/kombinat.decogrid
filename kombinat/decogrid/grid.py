@@ -81,7 +81,7 @@ for i in range(2, min(7, columns)):
 
         css += "\ndiv.width-%d\\3a %d { width: %.4f%% }" % (
             j, i, 100.0 / width * \
-                          (j * cell + (j - 1) * padding), j, i)
+                          (j * cell + (j - 1) * padding))
 
         pos += "\ndiv.position-%d\\3a %d { margin-left: -%.4f%% }" % (
             j, i, 100 - (100.0 / width * \
