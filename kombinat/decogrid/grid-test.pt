@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="imcn.theme">
+          
+<style type="text/css"
+       metal:fill-slot="style_slot">
+    #test .row {
+        background-color: #EEE;
+        padding: 0.5em 0;
+    }
+    #test .row .cell {
+        display: block;
+        height: 3em;
+        background-color: #DDD;
+    }
+</style>
+
+<body>
+    <div id="test"
+          metal:fill-slot="main">
+        
+        <div class="row" tal:repeat="n python:range(2, 7)">
+            <div tal:repeat="pos python:range(0,n)"
+                 tal:attributes="class python:'cell width-1:%d position-%s' % (
+                    n, pos == 0 and '0' or '%d:%d' % (pos, n))"
+                 tal:content="string:Col${pos}" />
+        </div>        
+        
+        <tal:loop tal:repeat="p2 python:range(1,17)">
+        <div class="row" tal:repeat="p1 python:range(0,16)">
+            <div tal:attributes="class python:'cell width-%d position-%d' % (p2, p1)"
+             tal:content="string:width-${p2} position-${p1}" />
+        </div>
+        </tal:loop>
+        
+    </div>
+</body>
+</html>
