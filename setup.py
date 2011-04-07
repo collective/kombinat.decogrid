@@ -11,12 +11,14 @@ setup(name='kombinat.decogrid',
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
+        "Framework :: Plone"
+        "Environment :: Console",
         "Programming Language :: Python",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='decogrid',
+      author='Daniel Widerin',
+      author_email='daniel.widerin@kombinat.at',
+      url='http://svn.plone.org/svn/collective/kombinat.decogrid/trunk',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['kombinat'],

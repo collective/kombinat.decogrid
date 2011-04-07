@@ -1,7 +1,8 @@
 Changelog
 =========
 
-0.1 - 2011-03-15
+0.1 - 2011-04-07
 ----------------
 
-- Initial release
+- Idea and initial release
+  [saily]
