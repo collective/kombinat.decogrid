@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.1 - 2011-05-26
+------------------
+
+- updated install documentation [petschki]
+
 0.1 - 2011-04-07
 ----------------
 
