@@ -11,7 +11,7 @@ setup(name='kombinat.decogrid',
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone"
+        "Framework :: Plone",
         "Environment :: Console",
         "Programming Language :: Python",
         ],
