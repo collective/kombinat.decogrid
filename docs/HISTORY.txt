@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.2 - 2012-07-09
+----------------
+
+- fixed css lineendings
+- removed double "position-0" declaration
+  [petschki]
+
 0.1.1 - 2011-05-26
 ------------------
 

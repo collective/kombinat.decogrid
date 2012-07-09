@@ -90,10 +90,8 @@ class Deco(object):
 
     def conveniences(self, level=7):
         css = """\
-%s.%s-full { width: %.4f%% }
-%s.%s-0 { margin-left: %.4f%% }
-""" % (self.element, self.css_width, self.width_full,
-       self.element, self.css_position, self.position_0)
+%s.%s-full { width: %.4f%%; }
+""" % (self.element, self.css_width, self.width_full)
 
         for i in range(2, min(level, self.columns)):
             pos = ""
@@ -104,11 +102,11 @@ class Deco(object):
                 else:
                     cell = float(self.width - self.margin * i) / i
 
-                css += "\n%s.%s-%d\\3a %d { width: %.4f%% }" % (
+                css += "\n%s.%s-%d\\3a %d { width: %.4f%%; }" % (
                     self.element, self.css_width, j, i,
                     100.0 / self.width * (j * cell + (j - 1) * self.margin))
 
-                pos += "\n%s.%s-%d\\3a %d { margin-left: %.4f%% }" % (
+                pos += "\n%s.%s-%d\\3a %d { margin-left: %.4f%%; }" % (
                     self.element, self.css_position, j, i, -100 + (
                         100.0 / self.width * (j * cell + (j + (
                             not self.omit and 0.5 or 0)) * self.margin)))
