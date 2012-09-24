@@ -6,7 +6,7 @@ version = '0.3'
 setup(name='kombinat.decogrid',
       version=version,
       description="A decogrid generator for plone columns.css file.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
