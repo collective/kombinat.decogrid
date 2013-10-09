@@ -3,13 +3,13 @@
  * Portal left/right margin is ${portal_margin}dpx ($p_portal_margin%).
  */
 
-${element}.${css_row} {
+${tag}.${css_row} {
   float: left;
   width: 100%;
   display: block;
   position: relative;
 }
-${element}.${css_cell} {
+${tag}.${css_cell} {
   position: relative;
   float: left;
   left: 100%;

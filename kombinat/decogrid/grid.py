@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import optparse
+import argparse
 import os.path
 import string
 import sys
@@ -8,7 +8,6 @@ import sys
 
 class Deco(object):
 
-    element = "div"
     css_row = "row"
     css_cell = "cell"
     css_width = "width"
@@ -17,11 +16,13 @@ class Deco(object):
     template = string.Template(open(
         os.path.join(os.path.dirname(__file__), 'deco.css'), 'r').read())
 
-    def __init__(self, width, margin, columns, omit):
+    def __init__(self, width, margin, columns, omit, maxlevel=7, tag='div'):
         self.width = width
         self.margin = margin
         self.columns = columns
         self.omit = omit
+        self.maxlevel = maxlevel
+        self.tag = tag
 
     @property
     def p_cell(self):
@@ -69,7 +70,7 @@ class Deco(object):
         for i in range(1, self.columns + 1):
             w = 100.0 / self.width * (i * self.cell + (i - 1) * self.margin)
             css += "\n%s.%s-%d { width: %.4f%%; }" % (
-                self.element, self.css_width, i, w)
+                self.tag, self.css_width, i, w)
 
         return css
 
@@ -84,16 +85,16 @@ class Deco(object):
                     (i * self.cell + (i + 0.5) * self.margin)
 
             css += "\n%s.%s-%d { margin-left: %.4f%%; }" % (
-                self.element, self.css_position, i, p)
+                self.tag, self.css_position, i, p)
 
         return css
 
-    def conveniences(self, level=7):
+    def conveniences(self):
         css = """\
 %s.%s-full { width: %.4f%%; }
-""" % (self.element, self.css_width, self.width_full)
+""" % (self.tag, self.css_width, self.width_full)
 
-        for i in range(2, min(level, self.columns)):
+        for i in range(2, min(self.maxlevel, self.columns)):
             pos = ""
             for j in range(1, i):
 
@@ -103,11 +104,11 @@ class Deco(object):
                     cell = float(self.width - self.margin * i) / i
 
                 css += "\n%s.%s-%d\\3a %d { width: %.4f%%; }" % (
-                    self.element, self.css_width, j, i,
+                    self.tag, self.css_width, j, i,
                     100.0 / self.width * (j * cell + (j - 1) * self.margin))
 
                 pos += "\n%s.%s-%d\\3a %d { margin-left: %.4f%%; }" % (
-                    self.element, self.css_position, j, i, -100 + (
+                    self.tag, self.css_position, j, i, -100 + (
                         100.0 / self.width * (j * cell + (j + (
                             not self.omit and 0.5 or 0)) * self.margin)))
 
@@ -130,35 +131,47 @@ class Deco(object):
 
 
 def generator():
-    parser = optparse.OptionParser(usage="""%prog [options]
+    parser = argparse.ArgumentParser(description="""%(prog)s [options]
 
-%prog generate decogrid columns.css for plone (http://deco.gs).""")
+%(prog)s generate decogrid columns.css for plone (http://deco.gs) Default \
+values are written in brackets.""")
 
-    parser.add_option('-c', '--columns', dest='columns', default=16,
-                      type="int", metavar="COLUMNS",
-                      help="how many columns (default: 16)")
+    parser.add_argument('-c', '--columns', dest='columns', default=16,
+                        type=int, metavar="COLUMNS",
+                        help="how many columns (16)")
 
-    parser.add_option('-o', '--omit-margin', action='store_true',
-                      dest='omit', default=False,
-                      help="omit left and right margin around the portal " + \
-                           "(recommended for nesting grids inside grids).")
+    parser.add_argument('-m', '--margin', dest='margin', default=10,
+                        type=int, metavar="MARGIN",
+                        help="margin in pixels between each cell (10)")
 
-    parser.add_option('-m', '--margin', dest='margin', default=10,
-                      type="int", metavar="MARGIN",
-                      help="margin in pixels between each cell (default 10)")
+    parser.add_argument('-w', '--width', dest='width', default=960,
+                        type=int, metavar="WIDTH",
+                        help="portal width in pixels including potentially " +
+                             "left and/or right margins (960)")
 
-    parser.add_option('-w', '--width', dest='width', default=960,
-                      type="int", metavar="WIDTH",
-                      help="portal width in pixels including potentially " + \
-                           "left and/or right margins (default: 960)")
+    parser.add_argument('-l', '--convenience-level', type=int, dest='level',
+                        default=7,
+                        help="max level of convenience classes to create (7)")
 
-    (options, args) = parser.parse_args()
+    parser.add_argument('-t', '--tag', type=str, dest='tag', default='div',
+                        help="html tag to be used for 'row', 'cell' and "
+                             "'convenience' css classes (div)")
 
-    if len(args) != 0:
-        parser.print_help()
-        return
+    # boolean parameters
+    parser.add_argument('-o', '--omit-margin', action='store_true',
+                        dest='omit', default=False,
+                        help="omit left and right margin around the portal " +
+                             "(recommended for nesting grids inside grids)")
 
-    deco = Deco(options.width, options.margin, options.columns, options.omit)
+    options = parser.parse_args()
+
+    deco = Deco(options.width,
+                options.margin,
+                options.columns,
+                options.omit,
+                options.level,
+                options.tag)
+
     sys.stdout.write(deco())
 
 
