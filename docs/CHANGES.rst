@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3 - unreleased
+0.3 (2013-10-09)
 ----------------
 
 - Switch from ``optparse`` to ``argparse``, so we need >= Python 2.7 now.
