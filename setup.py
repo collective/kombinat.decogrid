@@ -20,7 +20,7 @@ setup(
     ],
     keywords='decogrid',
     author='Daniel Widerin',
-    author_email='daniel.widerin@kombinat.at',
+    author_email='daniel@widerin.net',
     url='http://svn.plone.org/svn/collective/kombinat.decogrid/trunk',
     license='GPL',
     packages=find_packages(exclude=['ez_setup']),
