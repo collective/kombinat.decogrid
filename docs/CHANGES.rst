@@ -4,7 +4,8 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix packaging error, ``CHANGES.rst`` was missing in eggs.
+  [saily]
 
 
 0.3 (2013-10-09)

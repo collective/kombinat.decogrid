@@ -1,3 +1,9 @@
-include *
+include *.txt
+include *.rst
+
 recursive-include kombinat *
-global-exclude *pyc
+recursive-include docs *
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .DS_Store
