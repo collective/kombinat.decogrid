@@ -4,6 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
+- Fixed warning: no files found matching '*.txt' from MANIFEST.in file
+  [macagua]
+
 - Fix packaging error, ``CHANGES.rst`` was missing in eggs.
   [saily]
 
