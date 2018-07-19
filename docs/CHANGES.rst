@@ -4,6 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
+- Added more strings classifiers items for the metadata package
+  [macagua]
+
 - Fixed warning: no files found matching '*.txt' from MANIFEST.in file
   [macagua]
 
