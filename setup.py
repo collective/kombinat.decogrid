@@ -8,8 +8,8 @@ setup(
     version=version,
     description="A decogrid generator for plone columns.css file.",
     long_description="\n".join([
-        open("README.rst").read(),
-        open(os.path.join("docs", "CHANGES.rst")).read(),
+        open("README.rst").read() + "\n" +
+        open("CHANGES.rst").read(),
     ]),
     # Get more strings from
     # https://pypi.org/pypi?:action=list_classifiers
