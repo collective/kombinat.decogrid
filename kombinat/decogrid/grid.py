@@ -133,7 +133,7 @@ class Deco(object):
 def generator():
     parser = argparse.ArgumentParser(description="""%(prog)s [options]
 
-%(prog)s generate decogrid columns.css for plone (http://deco.gs) Default \
+%(prog)s generate decogrid columns.css for Plone (https://github.com/limi/deco.gs) Default \
 values are written in brackets.""")
 
     parser.add_argument('-c', '--columns', dest='columns', default=16,

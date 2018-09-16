@@ -4,6 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
+- Changed the Deco.gs from the script command description
+  [macagua]
+
 - Changed the i18n domain for grid-test page template
   [macagua]
 
