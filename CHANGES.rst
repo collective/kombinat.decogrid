@@ -4,6 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
+- Changed the i18n domain for grid-test page template
+  [macagua]
+
 - Added improvements about README file
   [macagua]
 
